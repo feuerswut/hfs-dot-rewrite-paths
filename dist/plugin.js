@@ -1,10 +1,17 @@
-exports.version = 1.1;
+exports.version = 1.2;
 exports.description = "Rewrites request paths by stripping leading dots from path segments (e.g. /.file → /file)";
+
 exports.apiRequired = 8.65;
 exports.author = "Feuerswut";
 exports.repo = "Feuerswut/hfs-DotRewritePaths";
 
 exports.config = {
+    logging: {
+        type: 'boolean',
+        label: 'Enable Logging',
+        defaultValue: true,
+        helperText: 'Log path rewrites to the console.',
+    },
     paths: {
         type: 'array',
         label: 'Path Prefixes',
@@ -15,13 +22,13 @@ exports.config = {
                 type: 'string',
                 label: 'Prefix',
                 helperText: 'e.g. /files or /public',
-                $width: 5,
+                $width: 3,
             },
             enabled: {
                 type: 'boolean',
                 label: 'Enabled',
                 defaultValue: true,
-                $width: 1,
+                $width: 2,
             },
         },
     },
@@ -47,8 +54,9 @@ exports.init = api => {
             .join('/');
 
         if (rewritten !== ctx.path) {
-            console.log(`[dot-rewrite] ${ctx.path} → ${rewritten}`);
-            ctx.path = rewritten; // Koa setter also updates ctx.req.url
+            if (api.getConfig('logging') !== false)
+                console.log(`[dot-rewrite] ${ctx.path} → ${rewritten}`);
+            ctx.path = rewritten;
         }
     }
 };
