@@ -1,9 +1,9 @@
-exports.version = 1.2;
+exports.version = 1.3;
 exports.description = "Rewrites request paths by stripping leading dots from path segments (e.g. /.file → /file)";
 
 exports.apiRequired = 8.65;
 exports.author = "Feuerswut";
-exports.repo = "Feuerswut/hfs-DotRewritePaths";
+exports.repo = "Feuerswut/hfs-dot-rewrite-paths";
 
 exports.config = {
     logging: {
