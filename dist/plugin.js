@@ -1,3 +1,6 @@
+// DEPRECATED: merged into security-suite (https://github.com/feuerswut/security-suite).
+// This plugin will not receive further updates; only security-suite is maintained.
+
 exports.version = 1.3;
 exports.description = "Rewrites request paths by stripping leading dots from path segments (e.g. /.file → /file)";
 
@@ -6,6 +9,14 @@ exports.author = "feuerswut";
 exports.repo = "feuerswut/hfs-dot-rewrite-paths";
 
 exports.config = {
+    header_deprecated: {
+        type: 'show_html',
+        html: '<div style="background:#402020;border:1px solid #a33;border-radius:6px;padding:10px 14px;margin-bottom:1em">'
+            + '<strong>Deprecated</strong> &mdash; this plugin has been merged into '
+            + '<a href="https://github.com/feuerswut/security-suite" target="_blank" rel="noopener">security-suite</a>. '
+            + 'It will not receive further updates; only security-suite is maintained going forward.'
+            + '</div>',
+    },
     logging: {
         type: 'boolean',
         label: 'Enable Logging',
